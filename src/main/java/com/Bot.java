@@ -13,9 +13,7 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.Keyboard
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 public class Bot extends TelegramLongPollingBot {
 
@@ -75,8 +73,8 @@ public class Bot extends TelegramLongPollingBot {
                     sendMsg(message, sDate);
                     break;
                 case "Скажи время":
-                    Date time = new Date();
-                    String sTime = String.format("Текущее  время: %T", time);
+                    GregorianCalendar gcalendar = new GregorianCalendar();
+                    String sTime = String.format("Текущее  время: " + gcalendar.get(Calendar.HOUR) + ":" + gcalendar.get(Calendar.MINUTE) + ":" + gcalendar.get(Calendar.SECOND));
                     sendMsg(message, sTime);
                     break;
                 default:
