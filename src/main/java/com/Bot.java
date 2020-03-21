@@ -14,6 +14,7 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Bot extends TelegramLongPollingBot {
@@ -67,6 +68,11 @@ public class Bot extends TelegramLongPollingBot {
                     break;
                 case "/settings":
                     sendMsg(message, "Что будем настраивать?");
+                    break;
+                case "Скажи время":
+                    Date date = new Date();
+                    String s = String.format("Текущая дата и время: %tc", date);
+                    sendMsg(message, s);
                     break;
                 default:
             }
