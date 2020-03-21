@@ -28,7 +28,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>main.java.com.Bot</mainClass>
+                            <mainClass>com.Bot</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
