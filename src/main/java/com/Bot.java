@@ -41,7 +41,7 @@ public class Bot extends TelegramLongPollingBot {
         if (message != null && message.hasText()) {
             switch (message.getText()) {
                 case "/start":
-                    sendMsg(message, "Вырубай");
+                    sendMsg(message, "Вырубай нафик");
                     break;
                 case "Привет":
                     sendMsg(message, "Привет!");
