@@ -12,6 +12,7 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException;
 public class Bot extends TelegramLongPollingBot {
 
     public static void main(String[] args) {
+
         ApiContextInitializer.init();
         TelegramBotsApi telegramBotsApi = new TelegramBotsApi();
         try {
@@ -39,6 +40,9 @@ public class Bot extends TelegramLongPollingBot {
         Message message = update.getMessage();
         if (message != null && message.hasText()) {
             switch (message.getText()) {
+                case "/start":
+                    sendMsg(message, "Вырубай");
+                    break;
                 case "Привет":
                     sendMsg(message, "Привет!");
                     break;
