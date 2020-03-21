@@ -17,6 +17,8 @@ import java.util.*;
 
 public class Bot extends TelegramLongPollingBot {
 
+    private String chatID;
+
     public static void main(String[] args) {
 
         ApiContextInitializer.init();
@@ -43,11 +45,29 @@ public class Bot extends TelegramLongPollingBot {
         }
     }
 
+    public void autoSendMsg(String text) {
+        SendMessage sendMessage = new SendMessage();
+        sendMessage.enableMarkdown(true);
+        sendMessage.setChatId(chatID);
+        sendMessage.setText(text);
+        try {
+            setButtons(sendMessage);
+            execute(sendMessage);
+        } catch (TelegramApiException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void onUpdateReceived(Update update) {
+        GregorianCalendar gcalendar1 = new GregorianCalendar();
+        if (gcalendar1.get(Calendar.MINUTE) == 48) {
+            autoSendMsg("48 минут");
+        }
         Message message = update.getMessage();
         if (message != null && message.hasText()) {
             switch (message.getText()) {
                 case "/start":
+                    chatID = message.getChatId().toString();
                     sendMsg(message, "Вырубай нафик");
                     break;
                 case "Привет":
