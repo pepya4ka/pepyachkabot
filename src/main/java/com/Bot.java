@@ -69,10 +69,15 @@ public class Bot extends TelegramLongPollingBot {
                 case "/settings":
                     sendMsg(message, "Что будем настраивать?");
                     break;
-                case "Скажи время":
+                case "Скажи полную дату":
                     Date date = new Date();
-                    String s = String.format("Текущая дата и время: %tc", date);
-                    sendMsg(message, s);
+                    String sDate = String.format("Текущая дата и время: %tc", date);
+                    sendMsg(message, sDate);
+                    break;
+                case "Скажи время":
+                    Date time = new Date();
+                    String sTime = String.format("Текущее  время: %T", time);
+                    sendMsg(message, sTime);
                     break;
                 default:
             }
